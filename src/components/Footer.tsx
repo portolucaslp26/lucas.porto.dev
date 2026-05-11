@@ -15,7 +15,7 @@ export default function Footer() {
         </Link>
 
         {/* Links */}
-        <div className="flex items-center gap-8">
+        {/* <div className="flex items-center gap-8">
           <Link
             href="/"
             className="font-mono text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors uppercase tracking-widest cursor-none"
@@ -46,7 +46,7 @@ export default function Footer() {
           >
             Termos
           </Link>
-        </div>
+        </div> */}
 
         {/* Copyright */}
         <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest">

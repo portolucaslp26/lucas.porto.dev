@@ -54,7 +54,7 @@ export default function Header() {
               LUCAS PORTO
             </span>
             <span className="hidden sm:block font-mono text-[0.55rem] text-muted-foreground uppercase tracking-widest mt-0.5 border border-border px-1.5 py-0.5">
-              DEV FULL-STACK
+              EM TESTE
             </span>
           </Link>
 

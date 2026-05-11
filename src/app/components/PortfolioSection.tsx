@@ -52,15 +52,18 @@ const projects = [
   //   alt: 'Fluxo de dados conectando sistemas diferentes em ambiente escuro',
   //   size: 'col-span-1',
   // },
-  // {
-  //   id: 6,
-  //   title: 'Habitat',
-  //   category: 'Sistema de Gestão',
-  //   result: 'Entregue em 6 semanas',
-  //   image: "https://img.rocket.new/generatedImages/rocket_gen_img_1ca4e8d79-1768647192769.png",
-  //   alt: 'Interface de sistema de gestão em laptop com design limpo e escuro',
-  //   size: 'col-span-1',
-  // },
+  {
+    id: 6,
+    title: 'CloudPark',
+    category: 'Landing Page',
+    result: 'Gestão de Estacionamentos',
+    image: '/assets/images/lp-cloudpark-home.png',
+    alt: 'Screenshot da landing page da CloudPark',
+    size: 'col-span-1',
+    url: 'https://cloudpark-lp.vercel.app/',
+    isWide: true,
+    isLarge: false
+  },
   {
     id: 7,
     title: 'VoIP Academia',

@@ -20,7 +20,7 @@ const services = [
     id: 'mobile',
     label: '02 // APPS_MOBILE',
     title: 'Aplicativos Mobile',
-    desc: 'Apps que seus clientes e equipe realmente usam. Funcionam no iOS e Android, sem dor de cabeça de manutenção duplicada.',
+    desc: 'Apps Mobile que seus clientes e equipe realmente usam. Funcionam no iOS e Android, com entrega garantida e publicada na Google Play e Apple Store, sem dor de cabeça.',
     metric: 'Funciona desde o dia 1',
     icon: 'DevicePhoneMobileIcon',
     span: 'col-span-1',
@@ -99,34 +99,40 @@ export default function ServicesPreview() {
             </div>
           </AnimateOnScroll>
 
-          <AnimateOnScroll direction="up" delay={100} threshold={0.05}>
-            <div className="service-card col-span-1 rounded-2xl p-8 flex flex-col justify-between min-h-64">
-              <div>
-                <span className="section-label text-[0.55rem] block mb-4">{services[1].label}</span>
-                <div className="w-10 h-10 border border-border rounded-lg flex items-center justify-center mb-4">
-                  <Icon name={services[1].icon as Parameters<typeof Icon>[0]['name']} size={20} className="text-accent" />
+                    <AnimateOnScroll direction="up" delay={0} threshold={0.05}>
+            <div className="service-card md:col-span-2 rounded-2xl p-8 flex flex-col justify-between min-h-64">
+              <div className="flex items-start justify-between">
+                <div>
+                  <span className="section-label text-[0.55rem] block mb-4">{services[1].label}</span>
+                  <h3 className="font-mono font-bold text-2xl text-foreground mb-3">{services[1].title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed max-w-sm">{services[1].desc}</p>
                 </div>
-                <h3 className="font-mono font-bold text-xl text-foreground mb-2">{services[1].title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{services[1].desc}</p>
+                <div className="w-12 h-12 border border-border rounded-lg flex items-center justify-center shrink-0 ml-4">
+                  <Icon name={services[1].icon as Parameters<typeof Icon>[0]['name']} size={22} className="text-accent" />
+                </div>
               </div>
-              <div className="mt-4 pt-4 border-t border-border">
+              <div className="mt-6 pt-4 border-t border-border flex items-center justify-between">
                 <span className="font-mono text-[0.6rem] text-primary uppercase tracking-widest">{services[1].metric}</span>
+                <span className="font-mono text-[0.6rem] text-muted-foreground uppercase">DISPONÍVEL</span>
               </div>
             </div>
           </AnimateOnScroll>
 
-          <AnimateOnScroll direction="up" delay={0} threshold={0.05}>
-            <div className="service-card col-span-1 rounded-2xl p-8 flex flex-col justify-between min-h-56">
-              <div>
-                <span className="section-label text-[0.55rem] block mb-4">{services[2].label}</span>
-                <div className="w-10 h-10 border border-border rounded-lg flex items-center justify-center mb-4">
-                  <Icon name={services[2].icon as Parameters<typeof Icon>[0]['name']} size={20} className="text-accent" />
+                    <AnimateOnScroll direction="up" delay={0} threshold={0.05}>
+            <div className="service-card md:col-span-2 rounded-2xl p-8 flex flex-col justify-between min-h-64">
+              <div className="flex items-start justify-between">
+                <div>
+                  <span className="section-label text-[0.55rem] block mb-4">{services[2].label}</span>
+                  <h3 className="font-mono font-bold text-2xl text-foreground mb-3">{services[2].title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed max-w-sm">{services[2].desc}</p>
                 </div>
-                <h3 className="font-mono font-bold text-xl text-foreground mb-2">{services[2].title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{services[2].desc}</p>
+                <div className="w-12 h-12 border border-border rounded-lg flex items-center justify-center shrink-0 ml-4">
+                  <Icon name={services[2].icon as Parameters<typeof Icon>[0]['name']} size={22} className="text-accent" />
+                </div>
               </div>
-              <div className="mt-4 pt-4 border-t border-border">
+              <div className="mt-6 pt-4 border-t border-border flex items-center justify-between">
                 <span className="font-mono text-[0.6rem] text-primary uppercase tracking-widest">{services[2].metric}</span>
+                <span className="font-mono text-[0.6rem] text-muted-foreground uppercase">DISPONÍVEL</span>
               </div>
             </div>
           </AnimateOnScroll>

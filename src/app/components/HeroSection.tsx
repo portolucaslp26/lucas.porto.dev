@@ -98,7 +98,7 @@ export default function HeroSection() {
 
         <AnimateOnScroll direction="up" delay={500} duration={0.9} threshold={0}>
           <p className="max-w-2xl mx-auto text-muted-foreground text-base md:text-xl mb-10 leading-relaxedubuntu-light">
-            Processos lentos, sistemas que não conversam, tarefas manuais que deveriam ser automáticas. Trasformo problemas como esses em soluções de tecnologia que funcionam de verdade — sem jargões, sem surpresas.
+            Se você busca processos ágeis, sistemas que conversam entre si e tarefas maunuais que deveriam automáticas, eu posso te ajudar. Trasformo problemas como esses em soluções tecnológicas que funcionam de verdade — sem jargões, sem surpresas.
           </p>
         </AnimateOnScroll>
 

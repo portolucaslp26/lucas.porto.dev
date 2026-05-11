@@ -16,7 +16,7 @@ export default function HomePage() {
       <main>
         <HeroSection />
         <ServicesPreview />
-        {/* <PortfolioSection /> */}
+        <PortfolioSection />
         <AboutStrip />
         <CtaSection />
       </main>

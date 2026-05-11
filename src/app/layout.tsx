@@ -41,7 +41,9 @@ export default function RootLayout({
     <html lang="pt-BR" className={`${manrope.variable} ${jetbrainsMono.variable}`}>
       <body className={manrope.className}>
         {children}
-</body>
+        <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js" />
+        <script src="https://files.bpcontent.cloud/2026/05/10/15/20260510154732-HKNDWCB9.js" defer />
+      </body>
     </html>
   );
 }

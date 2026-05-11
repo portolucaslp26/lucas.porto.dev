@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import Icon from '@/components/ui/AppIcon';
+import AnimateOnScroll from '@/components/ui/AnimateOnScroll';
 
 const allServices = [
   {
@@ -67,69 +68,45 @@ const allServices = [
 ];
 
 export default function ServicesBento() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const cards = entry.target.querySelectorAll('.full-srv-card');
-            cards.forEach((card, i) => {
-              setTimeout(() => {
-                (card as HTMLElement).style.opacity = '1';
-                (card as HTMLElement).style.transform = 'translateY(0)';
-              }, i * 90);
-            });
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.05 }
-    );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section ref={sectionRef} className="py-24 px-6">
+    <section className="py-24 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-14">
-          <span className="section-label block mb-3">MINHAS_SOLUÇÕES</span>
-          <h2 className="font-mono font-black tracking-tighter text-section-xl text-foreground uppercase">
-            Soluções <span className="text-accent">Completas.</span>
-          </h2>
-        </div>
+        <AnimateOnScroll direction="up" delay={0}>
+          <div className="mb-14">
+            <span className="section-label block mb-3">MINHAS_SOLUÇÕES</span>
+            <h2 className="font-mono font-black tracking-tighter text-section-xl text-foreground uppercase">
+              Soluções <span className="text-accent">Completas.</span>
+            </h2>
+          </div>
+        </AnimateOnScroll>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {allServices.map((svc, i) => (
-            <div
-              key={svc.id}
-              className={`full-srv-card rounded-2xl p-8 flex flex-col justify-between gap-6 ${
-                svc.highlight
-                  ? 'border border-accent/25 bg-card shadow-[0_0_30px_rgba(74,222,128,0.05)]'
-                  : 'service-card'
-              }`}
-              style={{ opacity: 0, transform: 'translateY(20px)', transition: `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 60}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 60}ms` }}
-            >
-              {/* Top */}
-              <div>
-                <div className="flex items-start justify-between mb-5">
-                  <span className="font-mono text-[0.6rem] text-muted-foreground uppercase tracking-widest">{svc.label}</span>
-                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${svc.highlight ? 'bg-accent/10 border border-accent/30' : 'bg-muted border border-border'}`}>
-                    <Icon name={svc.icon as Parameters<typeof Icon>[0]['name']} size={18} className={svc.highlight ? 'text-accent' : 'text-muted-foreground'} />
+            <AnimateOnScroll key={svc.id} direction="up" delay={i * 60} threshold={0.05}>
+              <div
+                className={`rounded-2xl p-8 flex flex-col justify-between gap-6 ${
+                  svc.highlight
+                    ? 'border border-accent/25 bg-card shadow-[0_0_30px_rgba(74,222,128,0.05)]'
+                    : 'service-card'
+                }`}
+              >
+                <div>
+                  <div className="flex items-start justify-between mb-5">
+                    <span className="font-mono text-[0.6rem] text-muted-foreground uppercase tracking-widest">{svc.label}</span>
+                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${svc.highlight ? 'bg-accent/10 border border-accent/30' : 'bg-muted border border-border'}`}>
+                      <Icon name={svc.icon as Parameters<typeof Icon>[0]['name']} size={18} className={svc.highlight ? 'text-accent' : 'text-muted-foreground'} />
+                    </div>
                   </div>
+                  <h3 className="font-mono font-bold text-xl text-foreground mb-3">{svc.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxedubuntu-light">{svc.desc}</p>
                 </div>
-                <h3 className="font-mono font-bold text-xl text-foreground mb-3">{svc.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxedubuntu-light">{svc.desc}</p>
-              </div>
 
-              {/* Bottom */}
-              <div className="pt-4 border-t border-border flex items-center justify-between">
-                <span className="font-mono text-[0.6rem] text-primary uppercase tracking-widest">{svc.metric}</span>
-                <div className={`w-1.5 h-1.5 rounded-full ${svc.highlight ? 'bg-accent animate-pulse' : 'bg-muted-foreground'}`} />
+                <div className="pt-4 border-t border-border flex items-center justify-between">
+                  <span className="font-mono text-[0.6rem] text-primary uppercase tracking-widest">{svc.metric}</span>
+                  <div className={`w-1.5 h-1.5 rounded-full ${svc.highlight ? 'bg-accent animate-pulse' : 'bg-muted-foreground'}`} />
+                </div>
               </div>
-            </div>
+            </AnimateOnScroll>
           ))}
         </div>
       </div>

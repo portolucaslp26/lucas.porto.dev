@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
+import AnimateOnScroll from '@/components/ui/AnimateOnScroll';
 
 const steps = [
   {
@@ -34,76 +35,43 @@ const steps = [
 ];
 
 export default function ProcessSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const items = entry.target.querySelectorAll('.proc-reveal');
-            items.forEach((item, i) => {
-              setTimeout(() => {
-                (item as HTMLElement).style.opacity = '1';
-                (item as HTMLElement).style.transform = 'translateX(0)';
-              }, i * 120);
-            });
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section ref={sectionRef} className="py-24 px-6 border-t border-border relative overflow-hidden">
+    <section className="py-24 px-6 border-t border-border relative overflow-hidden">
       <div className="absolute inset-0 blob-primary pointer-events-none" aria-hidden="true" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="mb-14">
-          <span className="section-label block mb-3">COMO_FUNCIONA?</span>
-          <h2 className="font-mono font-black tracking-tighter text-section-xl text-foreground uppercase">
-            Do Problema à <span className="text-accent">Solução.</span>
-          </h2>
-        </div>
+        <AnimateOnScroll direction="up" delay={0}>
+          <div className="mb-14">
+            <span className="section-label block mb-3">COMO_FUNCIONA?</span>
+            <h2 className="font-mono font-black tracking-tighter text-section-xl text-foreground uppercase">
+              Do Problema à <span className="text-accent">Solução.</span>
+            </h2>
+          </div>
+        </AnimateOnScroll>
 
-        {/* Asymmetric process layout — alternating left/right */}
         <div className="space-y-4">
           {steps.map((step, i) => (
-            <div
-              key={step.num}
-              className={`proc-reveal service-card rounded-2xl p-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-start`}
-              style={{
-                opacity: 0,
-                transform: 'translateX(-20px)',
-                transition: `opacity 0.8s cubic-bezier(0.16,1,0.3,1) ${i * 80}ms, transform 0.8s cubic-bezier(0.16,1,0.3,1) ${i * 80}ms`,
-              }}
-            >
-              {/* Step number */}
-              <div className="md:col-span-1 flex items-start">
-                <span className="font-mono text-3xl font-black text-accent/30">{step.num}</span>
-              </div>
+            <AnimateOnScroll key={step.num} direction="left" delay={i * 80} threshold={0.1}>
+              <div className={`service-card rounded-2xl p-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-start`}>
+                <div className="md:col-span-1 flex items-start">
+                  <span className="font-mono text-3xl font-black text-accent/30">{step.num}</span>
+                </div>
 
-              {/* Title + duration */}
-              <div className="md:col-span-3">
-                <h3 className="font-mono font-bold text-lg text-foreground mb-1">{step.title}</h3>
-                <span className="font-mono text-[0.6rem] text-primary uppercase tracking-widest">{step.duration}</span>
-              </div>
+                <div className="md:col-span-3">
+                  <h3 className="font-mono font-bold text-lg text-foreground mb-1">{step.title}</h3>
+                  <span className="font-mono text-[0.6rem] text-primary uppercase tracking-widest">{step.duration}</span>
+                </div>
 
-              {/* Description */}
-              <div className="md:col-span-5">
-                <p className="text-muted-foreground text-sm leading-relaxedubuntu-light">{step.desc}</p>
-              </div>
+                <div className="md:col-span-5">
+                  <p className="text-muted-foreground text-sm leading-relaxedubuntu-light">{step.desc}</p>
+                </div>
 
-              {/* Output */}
-              <div className="md:col-span-3">
-                <span className="font-mono text-[0.55rem] text-muted-foreground uppercase tracking-widest block mb-2">ENTREGA</span>
-                <p className="font-mono text-[0.65rem] text-foreground/60 leading-relaxed">{step.output}</p>
+                <div className="md:col-span-3">
+                  <span className="font-mono text-[0.55rem] text-muted-foreground uppercase tracking-widest block mb-2">ENTREGA</span>
+                  <p className="font-mono text-[0.65rem] text-foreground/60 leading-relaxed">{step.output}</p>
+                </div>
               </div>
-            </div>
+            </AnimateOnScroll>
           ))}
         </div>
       </div>

@@ -51,7 +51,7 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-2.5 group cursor-none">
             {/* <AppLogo size={36} /> */}
             <span className="font-mono text-lg font-bold tracking-tighter text-foreground group-hover:text-accent transition-colors">
-              LUCAS PORTO
+              lucas porto
             </span>
             <span className="hidden sm:block font-mono text-[0.55rem] text-muted-foreground uppercase tracking-widest mt-0.5 border border-border px-1.5 py-0.5">
               EM TESTE
